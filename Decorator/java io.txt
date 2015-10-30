@@ -1,0 +1,139 @@
+%%plantuml figure1
+@startuml
+scale 800 width
+InputStream <|-left- ByteArrayInputStream
+InputStream <|-- FileInputStream
+InputStream <|-right- StringBufferInputStream
+InputStream <|-- FilterInputStream
+
+FilterInputStream <|-- DataInputStream
+FilterInputStream <|-left- BufferedInputStream
+FilterInputStream <|-- PushbackInputStream
+FilterInputStream <|-- LineNumberInputStream
+
+ 
+abstract class InputStream{
+ +InputStream()
+ +read():int
+ +read(byte[]):int
+ +read(byte[],int,int):int
+ +skip(long):long
+ +available():int
+ +close():void
+ +mark(int):void
+ +reset():void
+ +markSupported():boolean
+}
+
+class ByteArrayInputStream{
+ +ByteArrayInputStream(byte[])
+ +ByteArrayInputStream(byte[],int,int)
+ +available():int
+ +close():void
+ +mark(int):void
+ +markSupported():boolean
+ +read(byte[],int,int):int
+ +read():int
+ +reset():void
+ +skip(long):long
+}
+
+class StringBufferInputStream{
+ +StringBufferInputStream(String)
+ +available():int
+ +read(byte[],int,int):int
+ +read():int
+ +reset():void
+ +skip(long):long
+}
+
+class FileInputStream{
+ +FileInputStream(InputStream)
+ +available():int
+ +close():void
+ +mark(int):void
+ +markSupported():boolean
+ +read():int
+ +read(byte[]):int
+ +read(byte[],int,int):int
+ +reset():void
+ +skip(long):long
+}
+
+class FilterInputStream{
+ +FilterInputSteam(InputSteam)
+ +InputStream()
+ +read():int
+ +read(byte[]):int
+ +read(byte[],int,int):int
+ +skip(long):long
+ +available():int
+ +close():void
+ +mark(int):void
+ +reset():void
+ +markSupported():boolean
+}
+
+class DataInputStream{
+ +DataInputStream(InputStream)
+ +read(byte[]):int
+ +read(byte[],int,int):int
+ +readBoolean():boolean
+ +readByte():byte
+ +readChar():char
+ +readDouble():double
+ +readFloat():float
+ +readFully(byte[]):void
+ +readFully(byte[],int,int):void
+ +readInt():int
+ +readLine():String
+ +readLong():long
+ +readShort():Short
+ +readUnsignedByte():int
+ +readUnsignedShort():int
+ +readUTF():String
+ +readUTF(DataInput):static String
+ +skipbytes(int):int
+}
+
+class BufferedInputStream{
+ +BufferedInputStream(InputStream)
+ +BufferedInputStream(InputStream,int)
+ +available():int
+ +close():void
+ +mark(int):void
+ +reset():void
+ +markSupported():boolean
+ +read(byte[]):int
+ +read(byte[],int,int):int
+ +skip(long):long
+}
+class PushbackInputStream{
+ +PushbackInputStream(InputStream)
+ +PushbackInputStream(InputStream,int)
+ +available():int
+ +close():void
+ +mark(int):void
+ +reset():void
+ +markSupported():boolean
+ +read(byte[]):int
+ +read(byte[],int,int):int
+ +skip(long):long
+ +unread(byte[]):void
+ +unread(byte[],int,int):void
+ +unread(int):void
+}
+class LineNumberInputStream{
+ +LineNumberInputStream(InputStream)
+ +available():int
+ +getLineNumber():int
+ +mark(int):void
+ +read(byte[]):int
+ +read(byte[],int,int):int
+ +reset():void
+ +setLineNumber(int):void
+ +skip(long):long
+}
+ 
+ 
+@enduml
